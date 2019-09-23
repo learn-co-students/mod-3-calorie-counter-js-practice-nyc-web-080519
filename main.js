@@ -132,9 +132,13 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(function(cal) {
             const myLi = caloriesList.querySelector(`li[data-id='${cal.id}']`)
+            const originalCal = myLi.querySelector('strong').innerText
             myLi.querySelector('strong').innerText = cal.calorie
             myLi.querySelector('em').innerText = cal.note
             document.querySelector('.uk-modal').style.display = "none"
+            sum -= originalCal
+            sum += cal.calorie
+            progressBar.value = sum
         })
     })
 
